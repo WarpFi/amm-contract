@@ -18,6 +18,8 @@ contract PancakeV3LmPoolDeployer {
         _;
     }
 
+    event LmPoolCreated(address addr);
+
     constructor(address _masterChef) {
         masterChef = _masterChef;
     }
@@ -27,5 +29,6 @@ contract PancakeV3LmPoolDeployer {
     function deploy(IPancakeV3Pool pool) external onlyMasterChef returns (IPancakeV3LmPool lmPool) {
         lmPool = new PancakeV3LmPool(address(pool), masterChef, uint32(block.timestamp));
         IPancakeV3Factory(INonfungiblePositionManager(IMasterChefV3(masterChef).nonfungiblePositionManager()).factory()).setLmPool(address(pool), address(lmPool));
+        emit LmPoolCreated(address(lmPool));
     }
 }

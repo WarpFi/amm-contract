@@ -58,6 +58,12 @@ const u2uTestnet: NetworkUserConfig = {
   accounts: [process.env.KEY_U2U!],
 };
 
+const u2uMainnet: NetworkUserConfig = {
+  url: "https://rpc-mainnet.u2u.xyz/",
+  chainId: 39,
+  accounts: [process.env.KEY_U2U!],
+};
+
 const config: HardhatUserConfig = {
   defaultNetwork: 'hardhat',
   networks: {
@@ -72,7 +78,8 @@ const config: HardhatUserConfig = {
     ...(process.env.KEY_ETH && { eth }),
     // goerli: goerli,
     // mainnet: bscMainnet,
-    u2uTestnet: u2uTestnet
+    u2uTestnet: u2uTestnet,
+    u2uMainnet: u2uMainnet,
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY || '',
