@@ -134,18 +134,22 @@ async function main() {
   // console.log('nonfungibleTokenPositionDescriptor', nonfungibleTokenPositionDescriptor.address)
 
   // await tryVerify(nonfungibleTokenPositionDescriptor)
+  console.log('start nonfungiblePositionManager')
+    const NonfungiblePositionManager = new ContractFactory(
+      artifacts.NonfungiblePositionManager.abi,
+      artifacts.NonfungiblePositionManager.bytecode,
+      owner
+    )
 
-  const NonfungiblePositionManager = new ContractFactory(
-    artifacts.NonfungiblePositionManager.abi,
-    artifacts.NonfungiblePositionManager.bytecode,
-    owner
-  )
-  const nonfungiblePositionManager = await NonfungiblePositionManager.deploy(
-    pancakeV3PoolDeployer_address,
-    pancakeV3Factory_address,
-    config.WNATIVE,
-    nonfungibleTokenPositionDescriptor.address
-  )
+    const nonfungiblePositionManager = await NonfungiblePositionManager.deploy(
+      pancakeV3PoolDeployer_address,
+      pancakeV3Factory_address,
+      config.WNATIVE,
+      nonfungibleTokenPositionDescriptor.address
+    )
+    console.log('nonfungiblePositionManager', nonfungiblePositionManager.address)
+
+  
 
   // await tryVerify(nonfungiblePositionManager, [
   //   pancakeV3PoolDeployer_address,
@@ -153,7 +157,6 @@ async function main() {
   //   config.WNATIVE,
   //   nonfungibleTokenPositionDescriptor.address,
   // ])
-  console.log('nonfungiblePositionManager', nonfungiblePositionManager.address)
 
   const PancakeInterfaceMulticall = new ContractFactory(
     artifacts.PancakeInterfaceMulticall.abi,

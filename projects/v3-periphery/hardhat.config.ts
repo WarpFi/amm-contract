@@ -79,6 +79,13 @@ const u2uTestnet: NetworkUserConfig = {
   url: "https://rpc-nebulas-testnet.uniultra.xyz/",
   chainId: 2484,
   accounts: [process.env.KEY_U2U!],
+  gas: 5000000,
+};
+
+const u2uMainnet: NetworkUserConfig = {
+  url: "https://rpc-mainnet.u2u.xyz/",
+  chainId: 39,
+  accounts: [process.env.KEY_U2U!],
 };
 
 export default {
@@ -90,7 +97,8 @@ export default {
     ...(process.env.KEY_MAINNET && { bscMainnet }),
     ...(process.env.KEY_GOERLI && { goerli }),
     ...(process.env.KEY_ETH && { eth }),
-    u2uTestnet: u2uTestnet
+    u2uTestnet: u2uTestnet,
+    u2uMainnet: u2uMainnet,
     // mainnet: bscMainnet,
   },
   etherscan: {
@@ -99,7 +107,7 @@ export default {
   solidity: {
     compilers: [DEFAULT_COMPILER_SETTINGS],
     overrides: {
-      'contracts/NonfungiblePositionManager.sol': LOW_OPTIMIZER_COMPILER_SETTINGS,
+      'contracts/NonfungiblePositionManager.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
       'contracts/test/MockTimeNonfungiblePositionManager.sol': LOW_OPTIMIZER_COMPILER_SETTINGS,
       'contracts/test/NFTDescriptorTest.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
       'contracts/NFTDescriptorEx.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
