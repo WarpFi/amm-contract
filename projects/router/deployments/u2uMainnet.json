@@ -1,0 +1,7 @@
+{
+  "SmartRouter": "0x6Df591297eDcCaCb6D967df8866324bEAF2298C1",
+  "SmartRouterHelper": "0xE3946f1cEEB6adD27BE9fD683396dC355b959FB7",
+  "MixedRouteQuoterV1": "0x73052a9e994a1Ed6B731Cf9BFbD3169e523bc55b",
+  "QuoterV2": "0x7a97410dF4d86d8fd4Cc1d1B7E643b8B47e3C24b",
+  "TokenValidator": "0x0E35C0ABffaef2624eF383e4CbFe88c84B1a8dB2"
+}
